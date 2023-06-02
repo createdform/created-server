@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-var PORT = 4000
+var PORT = 80
 
 func main() {
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
