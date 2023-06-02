@@ -15,7 +15,7 @@ func main() {
 	})
 
 	http.HandleFunc("/verify", func(w http.ResponseWriter, r *http.Request) {
-		body, err := ioutil.ReadFile("commit_hash.txt")
+		body, err := ioutil.ReadFile("/home/commit_hash.txt")
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte("unable to read file: " + err.Error()))
