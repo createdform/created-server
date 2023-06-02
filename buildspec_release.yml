@@ -13,7 +13,7 @@ phases:
       - go get ./...
       - echo Compiling the Go code...
       - env GOOS=linux GOARCH=arm64 go build -o server main.go
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION > commit_hash.txt
+      - echo "$(date) $CODEBUILD_RESOLVED_SOURCE_VERSION" > commit_hash.txt
   post_build:
     commands:
       - echo Build completed on `date`
