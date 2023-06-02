@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo CODEBUILD_SRC_DIR - $CODEBUILD_SRC_DIR
+      - echo GOPATH - $GOPATH
+      - echo GOROOT - $GOROOT
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Getting packages
+      - go get ./...
+      - echo Compiling the Go code...
+      - env GOOS=linux GOARCH=arm64 go build -o server main.go
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - server
+    - appspec.yml
+    - scripts/*
